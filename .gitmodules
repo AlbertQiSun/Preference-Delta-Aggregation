@@ -1,0 +1,9 @@
+[submodule "third_party/LlamaFactory"]
+	path = third_party/LlamaFactory
+	url = https://github.com/hiyouga/LlamaFactory.git
+[submodule "third_party/opencompass"]
+	path = third_party/opencompass
+	url = https://github.com/open-compass/opencompass.git
+[submodule "third_party/Agentic-Rag"]
+	path = third_party/Agentic-Rag
+	url = https://github.com/yizhou0409/Agentic-Rag.git

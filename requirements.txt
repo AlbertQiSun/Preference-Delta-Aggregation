@@ -1,0 +1,9 @@
+# merging and analysis
+torch>=2.1
+safetensors>=0.4
+# TIES baseline, --export-full-model, build_ablation_models.py
+transformers>=4.51
+peft>=0.13
+# optional: memory measurement in analysis/merge_cost.py, tests
+psutil
+pytest

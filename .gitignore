@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+.ipynb_checkpoints/
+
+# checkpoints and outputs
+ckpt/
+merged/
+results/
+outputs/
+*.safetensors
+*.bin
+
+# local pre-release files, not part of the public repo
+_archive/
