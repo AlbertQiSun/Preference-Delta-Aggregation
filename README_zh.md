@@ -117,11 +117,13 @@ save_adapter(merged, "merged/pda_gam", reference_adapter="ckpt/delta_1")
 
 | 阶段 | 工具 |
 |---|---|
-| 1. 从每对弱模型构造偏好对 | *即将发布* |
+| 1. 从每对弱模型构造偏好对 | 未包含（见下文） |
 | 2. 用偏好优化把每个 preference delta 训练成 LoRA adapter | [LLaMA-Factory](https://github.com/hiyouga/LlamaFactory)（`third_party/LlamaFactory`） |
 | 3. 合并 adapter | `scripts/merge_adapters.py`（本仓库） |
 | 4a. Agentic search 评测（基于 Wikipedia 检索的多跳问答） | [Agentic-Rag](https://github.com/yizhou0409/Agentic-Rag)（`third_party/Agentic-Rag`） |
 | 4b. 知识推理评测 | [OpenCompass](https://github.com/open-compass/opencompass)（`third_party/opencompass`） |
+
+偏好数据的构造脚本、偏好数据本身、LLaMA-Factory 训练配置以及训练好的 preference-delta adapter 目前未包含在本仓库中。如有需要，请提 issue。
 
 各 submodule 的配置方法见其自身的 README。Agentic-Rag 需要先在 Wikipedia dump 上构建 E5 索引。
 
@@ -153,12 +155,6 @@ python scripts/build_ablation_models.py --base /path/to/Qwen3-8B --adapters ckpt
 * **Procrustes 在 O(r) 上求解。** 与论文一致，GAM 在正交群上求解对齐矩阵，因此结果与 SVD 函数的符号约定无关。`--procrustes rotation` 把解限制为旋转矩阵（det R = +1），用于复现我们最早的实现，仅为此保留。
 * **精度。** 默认在 CPU 上以 float64 合并（见 `--compute-dtype`）。所有脚本在 GPU 上都关闭了 TF32 matmul，因为它约 1e-3 的相对精度会在合并后的权重中体现出来。
 * **测试。** `python -m pytest tests/` 会检查快速实现与参考实现是否一致、结果是否不受 SVD 符号翻转影响，以及 averaging 基线是否与其稠密定义一致。
-
-## 计划
-
-- [x] GAM 合并、基线与分析代码
-- [ ] 偏好对构造与 LLaMA-Factory 训练配置
-- [ ] 训练好的 preference-delta adapter
 
 ## 引用
 
