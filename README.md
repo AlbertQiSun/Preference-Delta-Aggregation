@@ -1,7 +1,7 @@
 # From "Weak" Signals to Strong Models: Preference Delta Aggregation with LoRA Merging
 
 [![arXiv](https://img.shields.io/badge/arXiv-2606.00357-b31b1b.svg)](https://arxiv.org/abs/2606.00357)
-[![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-4b44ce.svg)](https://arxiv.org/abs/2606.00357)
+[![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-4b44ce.svg)](https://openreview.net/forum?id=NTLZwZkDzg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **English** | [简体中文](README_zh.md)
@@ -162,12 +162,29 @@ python scripts/build_ablation_models.py --base /path/to/Qwen3-8B --adapters ckpt
 
 ## Citation
 
+If you find this work useful, please cite our NeurIPS 2026 paper:
+
 ```bibtex
-@inproceedings{sun2026pda,
+@inproceedings{sun2026weaksignalsstrongmodels,
   title     = {From ``Weak'' Signals to Strong Models: Preference Delta Aggregation with LoRA Merging},
-  author    = {Sun, Qi and Zhang, Siyue and Chen, Yulin and Xue, Yuxiang and Peng, Ru and Zhao, Chen},
-  booktitle = {Advances in Neural Information Processing Systems},
-  year      = {2026}
+  author    = {Qi Sun and Siyue Zhang and Yulin Chen and Yuxiang Xue and Ru Peng and Chen Zhao},
+  booktitle = {The Fortieth Annual Conference on Neural Information Processing Systems},
+  year      = {2026},
+  url       = {https://openreview.net/forum?id=NTLZwZkDzg}
+}
+```
+
+The arXiv preprint:
+
+```bibtex
+@misc{sun2026weaksignalsstrongmodels_arxiv,
+      title={From "Weak" Signals to Strong Models: Preference Delta Aggregation with LoRA Merging}, 
+      author={Qi Sun and Siyue Zhang and Yulin Chen and Yuxiang Xue and Ru Peng and Chen Zhao},
+      year={2026},
+      eprint={2606.00357},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2606.00357}, 
 }
 ```
 
