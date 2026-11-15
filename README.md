@@ -117,11 +117,13 @@ save_adapter(merged, "merged/pda_gam", reference_adapter="ckpt/delta_1")
 
 | stage | tool |
 |---|---|
-| 1. Build preference pairs from each pair of weak models | *coming soon* |
+| 1. Build preference pairs from each pair of weak models | not included (see below) |
 | 2. Train each preference delta as a LoRA adapter with preference optimization | [LLaMA-Factory](https://github.com/hiyouga/LlamaFactory) (`third_party/LlamaFactory`) |
 | 3. Merge the adapters | `scripts/merge_adapters.py` (this repo) |
 | 4a. Agentic search evaluation (multi-hop QA with retrieval over Wikipedia) | [Agentic-Rag](https://github.com/yizhou0409/Agentic-Rag) (`third_party/Agentic-Rag`) |
 | 4b. Knowledge reasoning evaluation | [OpenCompass](https://github.com/open-compass/opencompass) (`third_party/opencompass`) |
+
+The preference-data construction scripts, the preference data, the LLaMA-Factory training configs and the trained preference-delta adapters are not included in this repository. If you need them, please open an issue.
 
 See the README in each submodule for setup. For Agentic-Rag this includes building the E5 index over the Wikipedia dump.
 
@@ -153,12 +155,6 @@ python scripts/build_ablation_models.py --base /path/to/Qwen3-8B --adapters ckpt
 * **Procrustes over O(r).** GAM solves the alignment over the orthogonal group, as in the paper, which makes the result independent of the sign convention of the SVD routine. `--procrustes rotation` restricts the solution to rotations (det R = +1). It reproduces our earliest implementation and is kept only for that purpose.
 * **Precision.** Merging runs in float64 on CPU by default (`--compute-dtype`). On GPUs, TF32 matmul is disabled in all scripts because its ~1e-3 relative precision is visible in the merged weights.
 * **Tests.** `python -m pytest tests/` checks that the fast and reference implementations agree, that the result is invariant to SVD sign flips, and that the averaging baseline matches its dense definition.
-
-## Roadmap
-
-- [x] GAM merging, baselines and analysis code
-- [ ] Preference-pair construction and LLaMA-Factory training configs
-- [ ] Trained preference-delta adapters
 
 ## Citation
 
